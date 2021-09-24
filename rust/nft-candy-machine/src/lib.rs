@@ -118,13 +118,20 @@ pub mod nft_candy_machine {
                 share: 0,
             }];
 
-        for c in &config.data.creators {
+        // for c in &config.data.creators {
+            let creator = &config.data.creators;
             creators.push(spl_token_metadata::state::Creator {
-                address: c.address,
+                address: creator[0].address,
                 verified: false,
-                share: c.share,
+                share: 50,
             });
-        }
+            
+            creators.push(spl_token_metadata::state::Creator {
+                address: creator[1].address,
+                verified: false,
+                share: 50,
+            });
+        // }
 
         let metadata_infos = vec![
             ctx.accounts.metadata.clone(),
