@@ -119,6 +119,10 @@ pub mod nft_candy_machine {
             }];
 
         // for c in &config.data.creators {
+            //////////////////////////////////////////////////////////////////
+            /// This is the case when we define two creator in the metadata
+            ///   Case A
+            /// //////////////////////////////////////////////////////////////
             let creator = &config.data.creators;
             creators.push(spl_token_metadata::state::Creator {
                 address: creator[0].address,
@@ -131,6 +135,31 @@ pub mod nft_candy_machine {
                 verified: false,
                 share: 50,
             });
+
+            //////////////////////////////////////////////////////////////////
+            /// This is the case when we define one or two creator in the metadata
+            ///    Case B
+            /// ///////////////////////////////////////////////////////////////
+            // let creator = &config.data.creators;
+            // if(&config.data.creators.len() == 1) {
+            //     creators.push(spl_token_metadata::state::Creator {
+            //         address: creator[0].address,
+            //         verified: false,
+            //         share: 50,
+            //     });
+            // } else {
+            //     creators.push(spl_token_metadata::state::Creator {
+            //         address: creator[0].address,
+            //         verified: false,
+            //         share: 50,
+            //     });
+                
+            //     creators.push(spl_token_metadata::state::Creator {
+            //         address: creator[1].address,
+            //         verified: false,
+            //         share: 50,
+            //     });
+            // }
         // }
 
         let metadata_infos = vec![
